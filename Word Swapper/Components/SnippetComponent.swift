@@ -13,9 +13,10 @@ struct SnippetComponent : View {
     
     var body : some View {
         HStack(alignment: .center) {
-            Text("Editar trecho:")
-            TextField("Trecho origem", text: $original_snippet)
-            TextField("Trecho modificado", text: $modified_snippet)
+            TextField("Origem", text: $original_snippet)
+            Image(systemName: "arrow.right")
+                .foregroundColor(.blue)
+            TextField("Modificação", text: $modified_snippet)
         }
     }
 }
