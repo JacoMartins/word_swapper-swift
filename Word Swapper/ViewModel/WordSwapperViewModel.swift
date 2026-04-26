@@ -8,6 +8,13 @@
 import Foundation
 import Observation
 
+// Change struct to make it mutable and identifiable
+struct Change: Identifiable {
+    let id = UUID()
+    var original: String
+    var modified: String
+}
+
 @Observable
 class WordSwapperViewModel {
     // All the data your app needs
@@ -15,7 +22,7 @@ class WordSwapperViewModel {
     var songName: String = ""
     var originalSnippet: String = ""
     var modifiedSnippet: String = ""
-    var changes: [(original: String, modified: String)] = []
+    var changes: [Change] = []
     
     // Add a new change to the list
     func addChange() {
@@ -23,11 +30,17 @@ class WordSwapperViewModel {
             return
         }
         
-        changes.append((original: originalSnippet, modified: modifiedSnippet))
+        changes.append(Change(original: originalSnippet, modified: modifiedSnippet))
         
         // Clear the fields after adding
         originalSnippet = ""
         modifiedSnippet = ""
+    }
+    
+    // Remove a change at specific index
+    func removeChange(at index: Int) {
+        guard index >= 0 && index < changes.count else { return }
+        changes.remove(at: index)
     }
     
     // Apply all changes to the lyrics
