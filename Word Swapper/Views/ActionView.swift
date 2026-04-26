@@ -16,7 +16,9 @@ struct ActionView: View {
                 TextField("Nome da música", text: $viewModel.songName)
                 Spacer()
                 Button("Adicionar edição", action: viewModel.addChange)
+                    .buttonStyle(.bordered)
                 Button("Aplicar", action: viewModel.apply)
+                    .buttonStyle(.borderedProminent)
             }
             .padding(6)
         }
