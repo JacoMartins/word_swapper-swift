@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var viewModel = WordSwapperViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            InputView(viewModel: viewModel)
+            ChangeView(viewModel: viewModel)
+            ActionView(viewModel: viewModel)
         }
-        .padding()
+        .padding(8)
     }
 }
 
