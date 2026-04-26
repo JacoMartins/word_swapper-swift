@@ -12,15 +12,16 @@ struct InputView: View {
     
     var body: some View {
         GroupBox {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("Insira a letra da música desejada na caixa de texto abaixo")
-                    .font(.system(size: 18, weight: .medium))
-                    .padding(.bottom, 2)
+                    .font(.system(size: 18, weight: .semibold))
+                
                 TextEditor(text: $viewModel.lyrics)
-                    .frame(minHeight: 100, maxHeight: 256)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .font(.body)
             }
             .padding(6)
         }
+        .frame(idealWidth: 450, maxHeight: .infinity)
     }
 }
